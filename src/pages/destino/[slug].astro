@@ -1,0 +1,10 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+
+export const getStaticPaths = (async () => {
+    return [];
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+---
