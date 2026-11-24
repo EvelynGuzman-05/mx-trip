@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import Hero from "../sections/Hero.astro";
 ---
 
 <Layout
@@ -10,5 +11,8 @@ import Footer from "../components/Footer.astro";
 	keywords="MX TRIP, catálogo turístico, viajes, destinos, rutas, México"
 >
 	<Nav />
+	<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grow py-8 flex flex-col gap-8">
+		<Hero />
+	</main>
 	<Footer />
 </Layout>
