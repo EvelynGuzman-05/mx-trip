@@ -1,0 +1,88 @@
+---
+import FavoritesNavButton from "./FavoritesNavButton.vue";
+---
+
+<!-- NAVBAR CON LOGO VECTORIAL + TRAYECTO EXTENDIDO -->
+<header class="bg-white/90 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-40 px-4 py-2.5">
+  <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+    <!-- LOGO INTEGRADO CON TRAYECTO DE AVIÓN MÁS LARGO Y VISIBLE -->
+    <a href="/" class="flex items-center gap-3 cursor-pointer group select-none" aria-label="Ir a inicio de MX TRIP">
+      <!-- CONTENEDOR DEL ICONO CON TRAYECTO EXTENDIDO -->
+      <div class="relative w-12 h-10 flex items-center justify-center shrink-0">
+        <!-- SVG con curva de vuelo amplia que envuelve el icono -->
+        <svg
+          class="absolute -left-2 -bottom-1 w-16 h-12 text-blue-500 overflow-visible pointer-events-none"
+          viewBox="0 0 64 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!-- Estela secundaria sutil -->
+          <path
+            d="M 4 42 C 14 38, 22 30, 36 18"
+            stroke="#93C5FD"
+            stroke-width="1.5"
+            stroke-dasharray="2 3"
+            stroke-linecap="round"
+            opacity="0.6"
+          />
+          <!-- Trayecto principal punteado animado -->
+          <path
+            class="animate-dash"
+            d="M 2 46 C 16 44, 26 34, 44 14"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-dasharray="3 4"
+            stroke-linecap="round"
+          />
+          <!-- Pequeñas chispas/puntos de impulso al inicio del vuelo -->
+          <circle cx="5" cy="45" r="1" fill="#3B82F6" opacity="0.5" />
+          <circle cx="10" cy="43" r="1.2" fill="#3B82F6" opacity="0.7" />
+        </svg>
+
+        <!-- Avión con sombra limpia y elevación al hover -->
+        <div
+          class="relative z-10 text-blue-600 ml-5 -mt-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 drop-shadow-sm"
+        >
+          <i class="fa-solid fa-plane text-2xl transform -rotate-45"></i>
+        </div>
+      </div>
+
+      <!-- TIPOGRAFÍA -->
+      <div class="flex flex-col ml-1">
+        <span
+          class="font-black text-slate-900 text-lg tracking-wider uppercase leading-none group-hover:text-blue-600 transition-colors"
+        >
+          MX<span class="text-blue-600">TRIP</span>
+        </span>
+        <span class="text-[9px] font-bold text-slate-400 tracking-widest uppercase mt-0.5">
+          Catálogo Turístico
+        </span>
+      </div>
+    </a>
+
+    <!-- BOTONES DE ACCIÓN DERECHA -->
+    <div class="flex items-center gap-3">
+      <a
+        id="nav-back-btn"
+        href="/"
+        class="bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl transition-all shadow-sm flex items-center justify-center"
+      >
+        INICIO
+      </a>
+
+      <FavoritesNavButton client:load />
+    </div>
+  </div>
+</header>
+
+<style>
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -16;
+    }
+  }
+
+  :global(.group:hover .animate-dash) {
+    animation: dash 1s linear infinite;
+  }
+</style>
