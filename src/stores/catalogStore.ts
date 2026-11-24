@@ -1,5 +1,6 @@
 import { ref } from "vue";
 
+export const searchQuery = ref("");
 export const favorites = ref<string[]>([]);
 export const showingFavoritesOnly = ref<boolean>(false);
 

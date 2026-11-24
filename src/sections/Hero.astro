@@ -1,0 +1,44 @@
+---
+import SearchBox from "../components/SearchBox.vue";
+---
+
+<section aria-labelledby="hero-title" class="relative rounded-3xl p-6 sm:p-12 overflow-hidden shadow-xl min-h-[360px] flex flex-col justify-center bg-slate-900 border border-slate-200/50">
+  <img
+    src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1600&q=80"
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover object-center opacity-70"
+  />
+  <div class="hero-overlay absolute inset-0"></div>
+
+  <div class="relative z-10 max-w-3xl mx-auto text-center space-y-5">
+    <h1 id="hero-title" class="font-extrabold text-3xl sm:text-5xl leading-tight sm:leading-none text-white tracking-tight">
+      EXPLORA TUS PRÓXIMOS DESTINOS CON MX TRIP
+    </h1>
+
+    <p class="text-base sm:text-lg text-slate-200 max-w-xl mx-auto font-medium drop-shadow-xs">
+      Rutas, recomendaciones, precios estimados y mapas de orientación para viajeros.
+    </p>
+
+    <SearchBox client:load />
+  </div>
+</section>
+
+<style>
+  /* Match the prototype's Tailwind 3 colors without overriding the app theme. */
+  section {
+    --color-slate-200: #e2e8f0;
+    --color-slate-300: #cbd5e1;
+    --color-slate-500: #64748b;
+    --color-slate-700: #334155;
+    --color-slate-900: #0f172a;
+    --color-blue-500: #3b82f6;
+  }
+
+  .hero-overlay {
+    background-image: linear-gradient(to top, #020617, rgb(15 23 42 / 60%), rgb(15 23 42 / 40%));
+  }
+
+  h1 {
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 7%)) drop-shadow(0 2px 2px rgb(0 0 0 / 6%));
+  }
+</style>
