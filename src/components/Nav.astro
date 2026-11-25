@@ -86,3 +86,12 @@ import FavoritesNavButton from "./FavoritesNavButton.vue";
     animation: dash 1s linear infinite;
   }
 </style>
+
+<script>
+  const navBackBtn = document.getElementById("nav-back-btn");
+  navBackBtn?.addEventListener("click", () => {
+    window.dispatchEvent(
+      new CustomEvent("toggle-favorites-view", { detail: false })
+    );
+  });
+</script>
