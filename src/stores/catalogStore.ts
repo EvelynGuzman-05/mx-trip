@@ -46,11 +46,11 @@ export function toggleFavorite(id: string): void {
 }
 
 export function toggleFavoritesView(): void {
-  showingFavoritesOnly.value = !showingFavoritesOnly.value;
+  showingFavoritesOnly.value = true;
   if (typeof window !== "undefined") {
     window.dispatchEvent(
       new CustomEvent("toggle-favorites-view", {
-        detail: showingFavoritesOnly.value,
+        detail: true,
       })
     );
   }
