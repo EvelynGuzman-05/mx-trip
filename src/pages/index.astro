@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Hero from "../sections/Hero.astro";
+import CategoryBar from "../components/CategoryBar.vue";
 ---
 
 <Layout
@@ -13,6 +14,7 @@ import Hero from "../sections/Hero.astro";
 	<Nav />
 	<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grow py-8 flex flex-col gap-8">
 		<Hero />
+		<CategoryBar client:load />
 	</main>
 	<Footer />
 </Layout>
