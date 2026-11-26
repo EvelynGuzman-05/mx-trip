@@ -1,6 +1,7 @@
 import { ref } from "vue";
 
 export const searchQuery = ref("");
+export const currentCategory = ref<string>("all");
 export const favorites = ref<string[]>([]);
 export const showingFavoritesOnly = ref<boolean>(false);
 
@@ -12,6 +13,19 @@ export function initStore(): void {
     } catch {
       favorites.value = [];
     }
+  }
+}
+
+export function setCategory(categoryId: string): void {
+  currentCategory.value = categoryId;
+  showingFavoritesOnly.value = false;
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(
+      new CustomEvent("category-changed", { detail: categoryId })
+    );
+    window.dispatchEvent(
+      new CustomEvent("toggle-favorites-view", { detail: false })
+    );
   }
 }
 
