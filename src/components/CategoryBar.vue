@@ -12,11 +12,11 @@
           :key="cat.id"
           type="button"
           @click="selectCategory(cat.id)"
-          class="px-4 py-2 rounded-xl text-xs sm:text-sm transition-all flex items-center gap-2 shrink-0 cursor-pointer"
+          class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-colors flex items-center gap-2 shrink-0 cursor-pointer"
           :class="
             selectedCategory === cat.id && !isShowingFavorites
-              ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20 font-semibold'
-              : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 font-medium'
+              ? 'bg-blue-600 text-white border-transparent shadow-md shadow-blue-500/20'
+              : 'bg-white text-slate-600 hover:bg-slate-100 border-slate-200'
           "
           :aria-pressed="selectedCategory === cat.id && !isShowingFavorites"
         >
