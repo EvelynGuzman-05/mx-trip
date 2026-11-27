@@ -101,24 +101,27 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section aria-label="Catálogo de destinos" class="relative space-y-8">
-    <div
-      v-if="paginatedDestinations.length > 0"
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-    >
-      <DestinationCard
-        v-for="destination in paginatedDestinations"
-        :key="destination.id"
-        :destination="destination"
+  <section aria-label="Catálogo de destinos" class="relative">
+    <div v-if="totalPages > 0" class="space-y-8">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <DestinationCard
+          v-for="destination in paginatedDestinations"
+          :key="destination.id"
+          :destination="destination"
+        />
+      </div>
+
+      <PaginationControls
+        :current-page="currentPage"
+        :total-pages="totalPages"
+        @previous="goToPreviousPage"
+        @next="goToNextPage"
       />
     </div>
-
-    <PaginationControls
-      v-if="totalPages > 0"
-      :current-page="currentPage"
-      :total-pages="totalPages"
-      @previous="goToPreviousPage"
-      @next="goToNextPage"
-    />
+    <div aria-live="polite">
+      <slot v-if="totalPages === 0" name="empty" />
+    </div>
   </section>
 </template>

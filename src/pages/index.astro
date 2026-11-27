@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import Hero from "../sections/Hero.astro";
 import Catalog from "../components/Catalog.vue";
 import CategoryBar from "../components/CategoryBar.vue";
+import EmptyState from "../components/EmptyState.astro";
 ---
 
 <Layout
@@ -16,7 +17,9 @@ import CategoryBar from "../components/CategoryBar.vue";
 	<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grow py-8 flex flex-col gap-8">
 		<Hero />
     <CategoryBar client:load />
-		<Catalog client:load />
+		<Catalog client:load>
+			<EmptyState slot="empty" />
+		</Catalog>
 	</main>
 	<Footer />
 </Layout>
