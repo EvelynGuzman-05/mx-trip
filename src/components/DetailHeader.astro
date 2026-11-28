@@ -1,0 +1,33 @@
+---
+import FavoriteButton from "./FavoriteButton.vue";
+
+interface Props {
+  id: string;
+  title: string;
+  location: string;
+  rating: string;
+}
+
+const { id, title, location, rating } = Astro.props;
+---
+
+<div
+  class="bg-white border border-slate-200/80 p-6 rounded-3xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+>
+  <div class="space-y-1">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+      {title}
+    </h1>
+    <p class="text-xs sm:text-sm font-semibold text-slate-500 flex items-center gap-1.5 flex-wrap">
+      <i class="fa-solid fa-location-dot text-slate-400" aria-hidden="true"></i>
+      <span>{location}</span>
+      <span class="text-slate-300" aria-hidden="true">•</span>
+      <span class="inline-flex items-center gap-1 text-amber-500 font-bold">
+        <i class="fa-solid fa-star text-xs" aria-hidden="true"></i>
+        <span>{rating} / 5.0</span>
+      </span>
+    </p>
+  </div>
+
+  <FavoriteButton client:load destinationId={id} />
+</div>
