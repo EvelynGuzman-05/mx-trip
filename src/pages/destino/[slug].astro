@@ -1,10 +1,45 @@
 ---
 import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import DetailHeader from "../../components/DetailHeader.astro";
+import GalleryViewer from "../../components/GalleryViewer.vue";
+import Footer from "../../components/Footer.astro";
+import { destinationsData } from "../../data/data";
+import type { Destination } from "../../types/Destination";
 
 export const getStaticPaths = (async () => {
-    return [];
+	return destinationsData.map((destination) => ({
+		params: { slug: destination.slug },
+		props: { destination },
+	}));
 }) satisfies GetStaticPaths;
 
-const { slug } = Astro.params;
+interface Props {
+	destination: Destination;
+}
+
+const { destination } = Astro.props;
 ---
+
+<Layout
+	title={`${destination.title} - MX TRIP`}
+	description={destination.shortDescription}
+	keywords={`MX TRIP, ${destination.title}, ${destination.location}, ${destination.categoryName}`}
+>
+	<Nav />
+	<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full grow space-y-8">
+		<DetailHeader
+			id={destination.id}
+			title={destination.title}
+			location={destination.location}
+			rating={destination.rating}
+		/>
+		<GalleryViewer
+			client:load
+			images={destination.gallery}
+			title={destination.title}
+		/>
+	</main>
+	<Footer />
+</Layout>
